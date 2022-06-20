@@ -1,6 +1,10 @@
 ## Data recovery on NCI-Gadi
 
-Due to the New File Management Policy for NCI’s /scratch File System, data 
+Due to the New File Management Policy for NCI’s /scratch File System, data that are not accessed for 100 days will be quarantined. 
+
+This blog presents some related codes to manage the files on gadi to address this issue.
+
+
 
 
 Due to a plugin called `jekyll-titles-from-headings` which is supported by GitHub Pages by default. The above header (in the markdown file) will be automatically used as the pages title.
