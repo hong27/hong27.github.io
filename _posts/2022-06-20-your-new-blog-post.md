@@ -29,7 +29,41 @@ If you have a large number of quarantined files, the txt file including the info
 split -l 10000 your-quarantined-list.txt
 ```
 
-- Use arguments from a 
+- Use arguments from a txt file line-by-line to execute a command
+
+If you have a txt file documenting the following information where each line is for a quarantined file, such as,
+
+```
+someArbitraryCharactersForUUID1 theRelatedPATH1\n
+someArbitraryCharactersForUUID2 theRelatedPATH2\n
+someArbitraryCharactersForUUID3 theRelatedPATH3\n
+...
+...
+```
+
+then the following python script will help executing a command with args reading from the txt file
+```python
+import os
+import glob
+import argparse
+
+def retrieve_files(txtfile):
+    f = open(txtfile,"r")
+    lines = f.readlines()
+    for line in lines:
+        uuid = line.split(" ")[0]
+        path = line.split(" ")[1][:-1]
+        os.system("nci-file-expiry recover {} '{}'".format(uuid, path))
+    f.close()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(usage=__doc__)
+    parser.add_argument('-txtfile', '--txtfile',       required=True, type=str)
+
+    args=parser.parse_args()
+    retrieve_files(args.txtfile)
+
+```
 
 
 
