@@ -20,6 +20,7 @@ After running this, a new job ID will be generated for this recovery work. you c
 ```
 nci-file-expiry status --id ID
 ```
+The status will be ACTIVE when it is in queue and becomes SUCCESS after it is recovered.
 
 #### Potential issues and scripts
 
