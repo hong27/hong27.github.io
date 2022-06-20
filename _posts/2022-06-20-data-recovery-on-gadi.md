@@ -106,4 +106,7 @@ cd $PBS_O_WORKDIR
 
 mpirun -np $((PBS_NCPUS/ncores_per_task)) --map-by ppr:$((ncores_per_numanode/ncores_per_task)):NUMA:PE=${ncores_per_task} nci-parallel --input-file cmds.txt --timeout 10000
 ```
+- Should not try to recover very large number of files
+
+To get things done within reasonable time, only necessary files are to be recovered, if you have files at a level of ~100,000 then the recovery can be done in half a day or so. With ~ 1 million files, this could take days and is hence a bad idea.
 
