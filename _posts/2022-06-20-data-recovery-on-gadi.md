@@ -15,6 +15,12 @@ nci-file-expiry list-quarantined --project a00 > log_quarantined_a00
 
 From the output record you can determine what to retrieved from the quarantined zone using ```nci-file-expiry recover UUID PATH```. 
 
+After running this, a new job ID will be generated for this recovery work. you can observe the status of this work by executing
+
+```
+nci-file-expiry status --id ID
+```
+
 #### Potential issues and scripts
 
 - Too many quarantined files leading to system time out
