@@ -8,7 +8,10 @@ This blog presents some related codes to manage the files on gadi to address thi
 
 ### Gadi scratch file expiry commands
 
-A [command sheet](https://nci.org.au/sites/default/files/documents/2022-04/GadiSystem-GadiScratchFileExpiryCommands-200422-1629-37.pdf) has been provided on nci website. In summary, ``` nci-file-expiry list-warning``` show all your files that will expire within 14 days.
+A [command sheet](https://nci.org.au/sites/default/files/documents/2022-04/GadiSystem-GadiScratchFileExpiryCommands-200422-1629-37.pdf) has been provided on nci website. In summary, ``` nci-file-expiry list-warnings``` shows all your files that will expire within 14 days. ```nci-file-expiry list-quarantined``` will provide a list of all your files which are recently expired and quarantined.
+```bash
+nci-file-expiry list-quarantined --project a00 > log_quarantined_a00
+```
 
 #### Some T-SQL Code
 
