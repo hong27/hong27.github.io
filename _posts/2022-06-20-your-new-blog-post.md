@@ -17,7 +17,15 @@ From the output record you can determine what to retrieved from the quarantined 
 
 #### Potential issues and scripts
 
-##### Too many quarantined files leading to system time out
+- Too many quarantined files leading to system time out
+
+If you have a large number of files (I don't know the bottom line but 1 million files can lead to this issue in my experience), the server can be timing out while trying to collect and process the information such as using ```nci-file-expiry recover```. In this case, you won't be able to get the list of your quarantined files and of course no way to recover them. You will need the help from NCI-Help-Desk. They would be helpful recovering your data or drop you a list of your quarantined files with UUID and PATH so that you can handle it yourself. We only talk about the latter case here.
+
+- A large txt file needs to be split
+
+If you have a large number of quarantined files, the txt file including the information will be large. If we are going to recover all files from quarantined, we'd better split large txt file into smaller ones so that later it would only take reasonably time to process the commands.
+
+
 
 
 #### Some T-SQL Code
