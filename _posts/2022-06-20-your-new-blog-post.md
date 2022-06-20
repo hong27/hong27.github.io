@@ -23,7 +23,11 @@ If you have a large number of files (I don't know the bottom line but 1 million 
 
 - A large txt file needs to be split
 
-If you have a large number of quarantined files, the txt file including the information will be large. If we are going to recover all files from quarantined, we'd better split large txt file into smaller ones so that later it would only take reasonably time to process the commands.
+If you have a large number of quarantined files, the txt file including the information will be large. If we are going to recover all files from quarantined, we'd better split large txt file into smaller ones so that later it would only take reasonably time to process the commands. The following command will do this.
+
+```
+split -l 10000 your-quarantined-list.txt
+```
 
 
 
