@@ -77,31 +77,26 @@ done
 ```
 where x* are the files splitted by the large quarantined_list.txt file.
 
+With the following script, we can then get all files in the ```quarantined_list.txt``` back from quarantined.
 
+```bash
+#!/bin/bash
+#PBS -P w47
+#PBS -N test_parallel
+#PBS -q normal
+#PBS -l walltime=05:00:00
+#PBS -l ncpus=144,mem=500GB
+#PBS -l storage=scratch/a00+scratch/b00
 
+#PBS -l wd
 
+module load nci-parallel/1.0.0a
+export ncores_per_task=1
+export ncores_per_numanode=12
+module load python3
+ulimit -s unlimited
+cd $PBS_O_WORKDIR
 
-
-
-
-
-#### Some T-SQL Code
-
-```tsql
-SELECT This, [Is], A, Code, Block -- Using SSMS style syntax highlighting
-    , REVERSE('abc')
-FROM dbo.SomeTable s
-    CROSS JOIN dbo.OtherTable o;
+mpirun -np $((PBS_NCPUS/ncores_per_task)) --map-by ppr:$((ncores_per_numanode/ncores_per_task)):NUMA:PE=${ncores_per_task} nci-parallel --input-file cmds.txt --timeout 10000
 ```
 
-#### Some PowerShell Code
-
-```powershell
-Write-Host "This is a powershell Code block";
-
-# There are many other languages you can use, but the style has to be loaded first
-
-ForEach ($thing in $things) {
-    Write-Output "It highlights it using the GitHub style"
-}
-```
