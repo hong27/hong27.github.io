@@ -13,6 +13,8 @@ A [command sheet](https://nci.org.au/sites/default/files/documents/2022-04/GadiS
 nci-file-expiry list-quarantined --project a00 > log_quarantined_a00
 ```
 
+From the output record you can determine what to retrieved from the quarantined zone using ```nci-file-expiry recover UUID PATH```. 
+
 #### Some T-SQL Code
 
 ```tsql
