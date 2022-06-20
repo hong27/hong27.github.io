@@ -41,7 +41,7 @@ someArbitraryCharactersForUUID3 theRelatedPATH3\n
 ...
 ```
 
-then the following python script will help executing a command with args reading from the txt file
+then the following python script ```get_quarantined.py``` will help executing a command with args reading from the txt file
 ```python
 import os
 import glob
@@ -64,6 +64,23 @@ if __name__ == "__main__":
     retrieve_files(args.txtfile)
 
 ```
+
+- Submit multiple task using nci-parallel
+
+The executation of the above code use one core to deal will one single txt file. If we have ~ 100 txt files, we need to have quite a lot of jobs submitted. Each job will occupy a node while only use one core to process the task, leading to inefficency of the HPC computing. To avoid this, we can use the [nci-parallel module](https://opus.nci.org.au/display/Help/nci-parallel) to submit the job. Particularly, we firstly create a text file to include all the command lines that we want to run, one task per line. In this work flow, this file ```cmds.txt``` can be generated with the following bash script.
+
+```bash
+for file in x*;
+do
+    echo "python3 get_quarantined.py --txtfile $file" >>cmds.txt
+done
+```
+where x* are the files splitted by the large quarantined_list.txt file.
+
+
+
+
+
 
 
 
