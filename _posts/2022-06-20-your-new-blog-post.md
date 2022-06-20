@@ -15,6 +15,11 @@ nci-file-expiry list-quarantined --project a00 > log_quarantined_a00
 
 From the output record you can determine what to retrieved from the quarantined zone using ```nci-file-expiry recover UUID PATH```. 
 
+#### Potential issues and scripts
+
+##### Too many quarantined files leading to system time out
+
+
 #### Some T-SQL Code
 
 ```tsql
